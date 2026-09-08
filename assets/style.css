@@ -541,6 +541,8 @@ section.active{display:block}
 .ft-btn:hover{background:var(--green-dark)}
 .filter-toggle:not([open]) .ft-btn{background:#fff;color:var(--green);border:1.5px solid var(--green);padding:7.5px 16.5px}
 .filter-toggle:not([open]) .ft-btn:hover{background:var(--green-light)}
+.filter-toggle:not([open]) .ft-btn.ft-on{background:var(--green);color:#fff;border-color:var(--green)}
+.filter-toggle:not([open]) .ft-btn.ft-on:hover{background:var(--green-dark)}
 .ft-funnel{width:14px;height:14px;flex-shrink:0}
 .ft-caret{width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(225deg);margin-left:3px;transition:transform .2s}
 .filter-toggle:not([open]) .ft-caret{transform:rotate(45deg) translateY(-1px)}
