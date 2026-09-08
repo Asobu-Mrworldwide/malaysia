@@ -47,6 +47,7 @@
     .wm-faq-h1{font-size:44px !important}
     .wm-hero-deco{display:none !important}
     .wm-content{grid-template-columns:1fr !important;gap:0 !important;padding:28px 18px 0 !important}
+    .wm-content > aside{margin-top:28px !important}
     .wm-toc{display:none !important}
     .wm-foot-top{grid-template-columns:1fr 1fr !important;padding:32px 20px 24px !important}
     .wm-foot-bottom{flex-direction:column !important;align-items:flex-start !important;gap:10px !important;padding:16px 20px !important}
@@ -84,35 +85,30 @@
       <a class="hb-link" href="contact.html">お問い合わせ</a>
     </div>
 
-    <button class="hb-sec" type="button" data-sec="guide" aria-expanded="false" aria-controls="hbSecGuide">
-      <span class="hb-sec__label">旅のガイド</span>
-      <span class="hb-sec__caret" aria-hidden="true">&#9660;</span>
-    </button>
-    <div class="hb-panel" id="hbSecGuide" hidden>
-      <a class="hb-link" href="checklist.html">持ち物チェックリスト</a>
-      <a class="hb-link" href="faq.html">よくある質問</a>
-      <a class="hb-link" href="contact.html">お問い合わせ</a>
-    </div>
-
     <button class="hb-sec hb-sec--last" type="button" data-sec="about" aria-expanded="false" aria-controls="hbSecAbout">
       <span class="hb-sec__label">World Mappyについて</span>
       <span class="hb-sec__caret" aria-hidden="true">&#9660;</span>
     </button>
     <div class="hb-panel" id="hbSecAbout" hidden>
       <div class="hb-about">
-        <p>情報が湢れるこの時代に、本当に必要な旅行情報だけをまとめた個人サイトです。</p>
         <a href="about.html">運営者情報 →</a>
+        <a href="faq.html">よくある質問 →</a>
+        <a href="disclaimer.html">免責事項 →</a>
+        <a href="privacy.html">プライバシーポリシー →</a>
         <a href="contact.html">お問い合わせ →</a>
       </div>
     </div>
 
+    <div class="hb-cta-wrap">
+      <a class="hb-cta" href="../index.html">すべての国を見る　→</a>
+    </div>
   </div>
 </aside>
 
   <div class="wm-hero" style="position: relative; height: 218px; background: #FAF8EF; overflow: hidden;">
-    <img class="wm-hero-deco wm-float" src="../assets/common/30_airplane.png" alt="" style="position: absolute; left: 126px; top: 26px; width: 96px; object-fit: contain;">
-    <img class="wm-hero-deco" src="../assets/common/22_cloud.png" alt="" style="position: absolute; left: 906px; top: 30px; width: 76px; object-fit: contain; opacity: 0.9;">
-    <img class="wm-hero-deco" src="../assets/common/22_cloud.png" alt="" style="position: absolute; right: 122px; top: 62px; width: 58px; object-fit: contain; opacity: 0.75;">
+    <img class="wm-hero-deco" src="../assets/common/22_cloud.png" alt="" style="position: absolute; left: 176px; top: 34px; width: 68px; object-fit: contain; opacity: 0.75;">
+    <img class="wm-hero-deco wm-float" src="../assets/common/30_airplane.png" alt="" style="position: absolute; left: 148px; top: 104px; width: 84px; object-fit: contain;">
+    <img class="wm-hero-deco" src="../assets/common/22_cloud.png" alt="" style="position: absolute; right: 396px; top: 40px; width: 62px; object-fit: contain; opacity: 0.8;">
     <img class="wm-hero-deco" src="../assets/common/13_question-bubble.png" alt="" style="position: absolute; right: 168px; top: 46px; width: 150px; object-fit: contain;">
 
     <div class="wm-hero-copy" style="position: relative; display: grid; gap: 12px; padding: 44px 0 0 316px;">
@@ -130,19 +126,10 @@
 
     <aside style="display: grid; gap: 20px;">
       <div style="display: grid; gap: 14px; justify-items: center; padding: 26px 22px 24px; border-radius: 12px; background: #FCF6E8; text-align: center;">
-        <img src="../assets/common/08_suitcase.png" alt="" style="width: 96px; object-fit: contain;">
+        <img src="../assets/common/contact-mailbox.png" alt="" style="width: 108px; object-fit: contain;">
         <h2 style="margin: 0; font-size: 17px; font-weight: 900; letter-spacing: 0.02em; color: #1F2A44;">お問い合わせ</h2>
         <p style="margin: 0; font-size: 12.5px; line-height: 1.95; color: #4B5563;">その他のご質問やご意見・ご感想は、お問い合わせページからお気軽にご連絡ください。</p>
-        <a class="wm-cta-yellow" href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 18px; border-radius: 8px; background: #F0B90B; font-size: 13px; font-weight: 700; white-space: nowrap; color: #1F2A44;">お問い合わせページへ<span style="font-size: 15px;">›</span></a>
-      </div>
-
-      <div style="display: grid; gap: 10px; padding: 20px 20px 18px; border-radius: 12px; background: #F5F7F9;">
-        <div style="display: flex; align-items: center; gap: 11px;">
-          <img src="../assets/common/15_idea-bubble.png" alt="" style="flex: none; width: 38px; object-fit: contain;">
-          <span style="font-size: 14px; font-weight: 900; color: #1F2A44;">旅の準備もサポート</span>
-        </div>
-        <p style="margin: 0; font-size: 12.5px; line-height: 1.9; color: #4B5563;">出発前に確認しておきたい持ち物を、チェックリストにまとめています。</p>
-        <a href="checklist.html" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 4px; font-size: 13px; font-weight: 700; color: #15735b;">持ち物チェックリストを見る<span style="font-size: 15px;">›</span></a>
+        <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 20px; border-radius: 999px; background: #F5C63C; font-size: 13px; font-weight: 700; white-space: nowrap; color: #1F2A44;">お問い合わせページへ<span style="font-size: 15px;">›</span></a>
       </div>
     </aside>
   </div>

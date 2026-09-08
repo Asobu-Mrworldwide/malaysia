@@ -125,6 +125,31 @@
   const lineLink = document.getElementById("cl-share-line");
   if (lineLink) lineLink.href = `https://social-plugins.line.me/lineit/share?url=${shareUrl}`;
 
+  // 共通ページ・診断ページのヘッダーを、国ページと同じ「スクロール量に連動して隠れる／現れる」挙動に統一する。
+  // 国ページ(#site-top-bar)とトップページ(index.html)はそれぞれ独自スクリプトで制御しているため対象外。
+  if (isCommonPage || isDiagPage) {
+    const hdr = document.querySelector("header.wm-header, header.site-header");
+    if (hdr && !document.getElementById("site-top-bar")) {
+      hdr.style.position = "sticky";
+      hdr.style.top = "0";
+      hdr.style.zIndex = "1000";
+      hdr.style.transition = "transform .3s ease";
+      let hdrH = hdr.offsetHeight;
+      let hideOffset = 0;
+      let lastY = window.scrollY;
+      let ticking = false;
+      const applyHdr = () => { hdr.style.transform = "translateY(-" + hideOffset + "px)"; ticking = false; };
+      window.addEventListener("scroll", () => {
+        const y = window.scrollY;
+        hideOffset = Math.max(0, Math.min(hdrH, hideOffset + (y - lastY)));
+        lastY = y;
+        if (y <= 0) hideOffset = 0;
+        if (!ticking) { ticking = true; requestAnimationFrame(applyHdr); }
+      }, { passive: true });
+      window.addEventListener("resize", () => { hdrH = hdr.offsetHeight; hideOffset = Math.min(hideOffset, hdrH); applyHdr(); });
+    }
+  }
+
   const shareCopyBtn = document.getElementById("cl-share-copy");
   if (shareCopyBtn) shareCopyBtn.addEventListener("click", () => {
     navigator.clipboard.writeText(location.href).then(() => {

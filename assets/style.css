@@ -57,6 +57,29 @@ a:hover{color:var(--green)}
 .toc-list a:hover{color:var(--green-dark);border-left-color:var(--green);background:#FAF7F2}
 .toc-list a.active{color:var(--green-dark);border-left-color:var(--green);background:#FAF7F2;font-weight:700}
 
+/* スマホ用: 目次FAB＋ボトムシート（PCでは非表示） */
+.toc-fab{display:none}
+.toc-sheet-overlay,.toc-sheet{display:none}
+@media(max-width:1020px){
+  .toc-fab{position:fixed;right:16px;bottom:16px;z-index:1200;display:inline-flex;align-items:center;gap:6px;padding:11px 16px;border:none;border-radius:999px;background:var(--green,#00a86b);color:#fff;font-size:13px;font-weight:700;box-shadow:0 4px 14px rgba(20,40,30,0.28);cursor:pointer}
+  .toc-fab[hidden]{display:none}
+  .toc-sheet-overlay{display:block;position:fixed;inset:0;z-index:1200;background:rgba(20,30,25,0.4);opacity:0;transition:opacity .2s ease}
+  .toc-sheet-overlay.open{opacity:1}
+  .toc-sheet{display:flex;flex-direction:column;position:fixed;left:0;right:0;bottom:0;z-index:1201;max-height:70vh;background:#fff;border-radius:14px 14px 0 0;padding:6px 18px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(20,40,30,0.18);transform:translateY(100%);transition:transform .22s ease}
+  .toc-sheet.open{transform:translateY(0)}
+  .toc-sheet[hidden],.toc-sheet-overlay[hidden]{display:none}
+  .toc-sheet-head{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-bottom:1px solid #E8E2D8}
+  .toc-sheet-close{border:none;background:none;font-size:15px;color:#8C877E;cursor:pointer;padding:4px 8px}
+  .toc-sheet .toc-list{overflow-y:auto;margin-top:8px;border-left:1px solid #E8E2D8}
+  .toc-sheet .toc-list a{padding:11px 12px;font-size:13.5px}
+  .toc-sheet .toc-list a.toc-sub-link{font-size:12.5px}
+}
+/* スマホ下部固定タブバーがある画面では、目次FABをその上へ逃がす */
+@media(max-width:520px){
+  .toc-fab{bottom:calc(64px + env(safe-area-inset-bottom))}
+  .toc-sheet{bottom:calc(56px + env(safe-area-inset-bottom))}
+}
+
 /* 右レール（広告・行きたいリスト・関連ページ） */
 .side-rail{display:grid;gap:14px;background:#fff;border-radius:10px;padding:18px;margin-top:20px;box-shadow:0 2px 0 rgba(20,40,30,0.05),0 6px 16px rgba(20,40,30,0.06)}
 .rail-ad{border:1px solid #E8E2D8;border-radius:8px;box-shadow:0 2px 0 rgba(20,40,30,0.07),0 6px 14px rgba(20,40,30,0.08);background:#FAF7F2;padding:12px;display:grid;gap:8px;justify-items:center}

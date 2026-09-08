@@ -28,10 +28,10 @@
 <meta name="twitter:title" content="イタリアのグルメ｜イタリア旅行ガイド">
 <meta name="twitter:description" content="古代ローマの遺跡が今も息づく首都ローマ、ルネサンス美術のフィレンツェ、水の都ヴェネツィア、モードの発信地ミラノ——一つの国に全く違う時代と文化が積み重なるイタリア。南北に長い国土はエリアで表情が変わり、経済とデザインの北部、古代とルネサン…">
 <meta name="twitter:image" content="https://worldmappy.com/italy/%E7%B4%A0%E6%9D%90/%E3%83%92%E3%83%BC%E3%83%AD%E3%83%BC.webp">
-<link rel="stylesheet" href="../assets/style.css?v=1788874984">
+<link rel="stylesheet" href="../assets/style.css?v=1788878149">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="../assets/affiliates-data.js?v=1788874984" defer></script>
-<script src="../assets/affiliates.js?v=1788874984" defer></script>
+<script src="../assets/affiliates-data.js?v=1788878149" defer></script>
+<script src="../assets/affiliates.js?v=1788878149" defer></script>
 <style>
 a.spot-link{color:var(--green);text-decoration:underline;cursor:pointer;font-weight:600}
 a.spot-link:hover{opacity:0.75}
@@ -163,8 +163,10 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
     </button>
     <div class="hb-panel" id="hbSecAbout" hidden>
       <div class="hb-about">
-        <p>情報が溢れるこの時代に、本当に必要な旅行情報だけをまとめた個人サイトです。</p>
-        <a href="../common/about.html">このサイトについて →</a>
+        <a href="../common/about.html">運営者情報 →</a>
+        <a href="../common/faq.html">よくある質問 →</a>
+        <a href="../common/disclaimer.html">免責事項 →</a>
+        <a href="../common/privacy.html">プライバシーポリシー →</a>
         <a href="../common/contact.html">お問い合わせ →</a>
       </div>
     </div>
@@ -214,6 +216,18 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
 <aside class="toc-sidebar" id="toc-sidebar">
   <span class="toc-label">CONTENTS</span>
   <div class="toc-list" id="toc-list"></div>
+</aside>
+<button type="button" class="toc-fab" id="toc-fab" aria-haspopup="true" aria-expanded="false" aria-controls="toc-sheet" hidden>
+  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3.5h12M2 8h12M2 12.5h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  <span>目次</span>
+</button>
+<div class="toc-sheet-overlay" id="toc-sheet-overlay" hidden></div>
+<aside class="toc-sheet" id="toc-sheet" role="dialog" aria-modal="true" aria-label="目次" hidden>
+  <div class="toc-sheet-head">
+    <span class="toc-label">CONTENTS</span>
+    <button type="button" class="toc-sheet-close" id="toc-sheet-close" aria-label="閉じる">✕</button>
+  </div>
+  <div class="toc-list" id="toc-list-m"></div>
 </aside>
 <div class="container" style="">
 <div id="slides-wrap">
@@ -1391,44 +1405,59 @@ document.addEventListener('keydown', function(e){
     var headH = header ? header.offsetHeight : 52;
     return navH + headH + 12;
   }
+  var _closeSheet = null;
   function build(){
     const list = document.getElementById('toc-list');
     if (!list) return;
+    const listM = document.getElementById('toc-list-m');
+    const fab = document.getElementById('toc-fab');
+    const targets = [list].concat(listM ? [listM] : []);
+    function hideAll(){ list.parentElement.style.display = 'none'; if (fab) fab.hidden = true; if (_closeSheet) _closeSheet(); }
     const activeSection = document.querySelector('section.active') || document.querySelector('.container section');
-    if (!activeSection) { list.parentElement.style.display = 'none'; return; }
+    if (!activeSection) { hideAll(); return; }
     const heads = Array.from(activeSection.querySelectorAll('h1.page-h1, h2, h3.toc-sub'));
-    if (!heads.length) { list.parentElement.style.display = 'none'; return; }
+    if (!heads.length) { hideAll(); return; }
     list.parentElement.style.display = '';
-    list.innerHTML = '';
+    if (fab) fab.hidden = false;
+    targets.forEach(function(t){ t.innerHTML = ''; });
+    const linkGroups = targets.map(function(){ return []; });
     heads.forEach(function(h, i){
       if (!h.id) h.id = slugify(h.textContent, i);
       const isSub = h.tagName === 'H3';
-      const a = document.createElement('a');
-      a.href = '#' + h.id;
       const firstSpan = h.querySelector('span:first-child');
-      a.textContent = firstSpan ? firstSpan.textContent : h.textContent;
-      if (isSub) a.classList.add('toc-sub-link');
-      a.addEventListener('click', function(e){
-        e.preventDefault();
+      const label = firstSpan ? firstSpan.textContent : h.textContent;
+      function jump(){
         var y = h.getBoundingClientRect().top + window.pageYOffset - topOffset();
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-        setActive(a);
+        setActive(i);
+      }
+      targets.forEach(function(t, ti){
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = label;
+        if (isSub) a.classList.add('toc-sub-link');
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          if (_closeSheet) _closeSheet();
+          jump();
+        });
+        t.appendChild(a);
+        linkGroups[ti].push(a);
       });
-      list.appendChild(a);
     });
-    const links = Array.from(list.querySelectorAll('a'));
-    function setActive(a){
-      links.forEach(function(l){ l.classList.remove('active'); });
-      if (a) a.classList.add('active');
+    function setActive(idx){
+      linkGroups.forEach(function(g){
+        g.forEach(function(l, li){ l.classList.toggle('active', li === idx); });
+      });
     }
     function updateActive(){
       var line = topOffset() + 4;
-      var current = heads[0];
+      var current = 0;
       for (var i = 0; i < heads.length; i++){
-        if (heads[i].getBoundingClientRect().top <= line) current = heads[i];
+        if (heads[i].getBoundingClientRect().top <= line) current = i;
         else break;
       }
-      setActive(links[heads.indexOf(current)]);
+      setActive(current);
     }
     var _ticking = false;
     function onScroll(){
@@ -1441,7 +1470,31 @@ document.addEventListener('keydown', function(e){
     window.addEventListener('scroll', onScroll, { passive: true });
     updateActive();
   }
-  document.addEventListener('DOMContentLoaded', build);
+  document.addEventListener('DOMContentLoaded', function(){
+    build();
+    var fab = document.getElementById('toc-fab');
+    var sheet = document.getElementById('toc-sheet');
+    var overlay = document.getElementById('toc-sheet-overlay');
+    var closeBtn = document.getElementById('toc-sheet-close');
+    if (!fab || !sheet || !overlay) return;
+    function open(){
+      overlay.hidden = false; sheet.hidden = false;
+      requestAnimationFrame(function(){ overlay.classList.add('open'); sheet.classList.add('open'); });
+      fab.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      overlay.classList.remove('open'); sheet.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      setTimeout(function(){ overlay.hidden = true; sheet.hidden = true; }, 220);
+    }
+    _closeSheet = close;
+    fab.addEventListener('click', open);
+    overlay.addEventListener('click', close);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  });
   
 })();
 </script>
