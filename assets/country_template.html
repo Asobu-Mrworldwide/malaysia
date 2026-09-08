@@ -510,14 +510,14 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
       {% for row in budget.plan_rows %}
       <tr style="border-bottom:1px solid #eee">
         <td style="padding:9px 10px;font-weight:700;color:var(--sub);font-size:0.92em">{{row.label}}</td>
-        <td style="padding:9px 10px;text-align:center;color:#2a5ca8">{{row.eco}}</td>
+        <td style="padding:9px 10px;text-align:center;color:#8C6A3A">{{row.eco}}</td>
         <td style="padding:9px 10px;text-align:center;color:var(--green)">{{row.std}}</td>
         <td style="padding:9px 10px;text-align:center;color:#8a6a00">{{row.lux}}</td>
       </tr>
       {% endfor %}
       <tr style="background:#f9f9f9;font-weight:700">
         <td style="padding:10px 10px;font-weight:700">合計目安</td>
-        <td style="padding:10px 10px;text-align:center;color:#2a5ca8;font-size:1.05em">{{budget.total_eco}}</td>
+        <td style="padding:10px 10px;text-align:center;color:#8C6A3A;font-size:1.05em">{{budget.total_eco}}</td>
         <td style="padding:10px 10px;text-align:center;color:var(--green);font-size:1.05em">{{budget.total_std}}</td>
         <td style="padding:10px 10px;text-align:center;color:#8a6a00;font-size:1.05em">{{budget.total_lux}}</td>
       </tr>
