@@ -287,7 +287,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
             <div class="rmr-title" style="margin:0">海外対応クレジットカードの申込</div>
             <span style="font-size:0.65em;color:#ffc400;font-weight:600;white-space:nowrap">1ヶ月前</span>
           </div>
-          <div class="rmr-desc">スペインはカード社会でほぼどこでも使えるが、小さなバルや朝市では少額の現金があると安心。カード類は発行に2〜3週間かかることもあるので、渡航が決まったら早めに動きたいところ。両替レートが良く現地ATMでユーロを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。</div>
+          <div class="rmr-desc">スペインはカード社会でほぼどこでも使えるが、小さなバルや朝市では少額の現金があると安心。両替レートが良く現地ATMでユーロを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。</div>
           <div data-affiliate-card="wise" style="margin-top:12px"></div>
         </div>
       </div>
@@ -840,6 +840,7 @@ function filterSpots(dim, value, btn) {
   });
   const shownEl = document.getElementById('spots-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#spots-grid .item-grid .item-card:not([style*="display: none"])').length;
+  _syncFtLabels();
 }
 
 function filterFood(dim, value, btn) {
@@ -856,7 +857,20 @@ function filterFood(dim, value, btn) {
   });
   const shownEl = document.getElementById('food-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#food-grid .item-card:not([style*="display: none"])').length;
+  _syncFtLabels();
 }
+
+function _syncFtLabels() {
+  document.querySelectorAll('.ft-btn').forEach(btn => {
+    const panel = btn.closest('details');
+    if (!panel) return;
+    const filtered = !!panel.querySelector('.filter-btn.active:not([data-filter="all"])');
+    for (const n of btn.childNodes) {
+      if (n.nodeType === 3 && n.textContent.trim()) { n.textContent = filtered ? '絞り込み中' : '絞り込み'; break; }
+    }
+  });
+}
+try { _syncFtLabels(); } catch (e) {}
 
 function _ftFakeBtn() { return { classList: { contains: function() { return false; }, add: function() {}, remove: function() {} } }; }
 function resetSpotFilters() {

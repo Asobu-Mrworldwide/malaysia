@@ -835,6 +835,7 @@ function filterSpots(dim, value, btn) {
   });
   const shownEl = document.getElementById('spots-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#spots-grid .item-grid .item-card:not([style*="display: none"])').length;
+  _syncFtLabels();
 }
 
 function filterFood(dim, value, btn) {
@@ -851,7 +852,20 @@ function filterFood(dim, value, btn) {
   });
   const shownEl = document.getElementById('food-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#food-grid .item-card:not([style*="display: none"])').length;
+  _syncFtLabels();
 }
+
+function _syncFtLabels() {
+  document.querySelectorAll('.ft-btn').forEach(btn => {
+    const panel = btn.closest('details');
+    if (!panel) return;
+    const filtered = !!panel.querySelector('.filter-btn.active:not([data-filter="all"])');
+    for (const n of btn.childNodes) {
+      if (n.nodeType === 3 && n.textContent.trim()) { n.textContent = filtered ? '絞り込み中' : '絞り込み'; break; }
+    }
+  });
+}
+try { _syncFtLabels(); } catch (e) {}
 
 function _ftFakeBtn() { return { classList: { contains: function() { return false; }, add: function() {}, remove: function() {} } }; }
 function resetSpotFilters() {

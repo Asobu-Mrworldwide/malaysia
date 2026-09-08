@@ -676,7 +676,7 @@
         "timing_color": "#cc142b",
         "border_color": "#cc142b",
         "bar_color": "linear-gradient(to bottom,#cc142b,#b09000)",
-        "desc_html": "ニュージーランドはEFTPOS中心のカード社会で、ほとんどの支払いがカードで済む。カード類は発行に2〜3週間かかることもあるので、渡航が決まったら早めに動きたいところ。両替レートが良く現地ATMでNZドルを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。",
+        "desc_html": "ニュージーランドはEFTPOS中心のカード社会で、ほとんどの支払いがカードで済む。両替レートが良く現地ATMでNZドルを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。",
         "wise_card": true
       },
       {
