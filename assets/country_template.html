@@ -1545,6 +1545,7 @@ function filterSpots(dim, value, btn) {
   });
   const shownEl = document.getElementById('spots-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#spots-grid .item-grid .item-card:not([style*="display: none"])').length;
+  if (btn && btn.blur) btn.blur();
   _syncFtLabels();
 }
 
@@ -1562,6 +1563,7 @@ function filterFood(dim, value, btn) {
   });
   const shownEl = document.getElementById('food-count-shown');
   if (shownEl) shownEl.textContent = document.querySelectorAll('#food-grid .item-card:not([style*="display: none"])').length;
+  if (btn && btn.blur) btn.blur();
   _syncFtLabels();
 }
 
