@@ -842,13 +842,18 @@ function _syncFtLabels() {
 try { _syncFtLabels(); } catch (e) {}
 
 function _ftFakeBtn() { return { classList: { contains: function() { return false; }, add: function() {}, remove: function() {} } }; }
+function _closeFilterPanels() {
+  document.querySelectorAll('details.filter-toggle[open]').forEach(d => d.removeAttribute('open'));
+}
 function resetSpotFilters() {
   document.querySelectorAll('#spots-filter-type .filter-btn.active, #spots-filter-region .filter-btn.active, #spots-filter-row .filter-btn.active').forEach(b => b.classList.remove('active'));
   filterSpots('type', 'all', _ftFakeBtn());
+  _closeFilterPanels();
 }
 function resetFoodFilters() {
   document.querySelectorAll('#food-filter-type .filter-btn.active, #food-filter-city .filter-btn.active').forEach(b => b.classList.remove('active'));
   filterFood('type', 'all', _ftFakeBtn());
+  _closeFilterPanels();
 }
 
 

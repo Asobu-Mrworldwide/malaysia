@@ -497,29 +497,29 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
   <h2 data-label="TRAVEL BUDGET">旅行費用の目安</h2>
   {% if budget.intro %}<p style="font-size:0.85em;color:var(--sub);line-height:1.8;margin:0 0 12px">{{budget.intro}}</p>{% endif %}
   <div style="overflow-x:auto">
-  <table class="budget-compare" style="width:100%;border-collapse:collapse;font-size:0.82em">
+  <table class="budget-compare" style="width:100%;border-collapse:collapse;font-size:0.82em;background:#FFFFFF;color:#4C504D">
     <thead>
       <tr>
-        <th style="padding:8px 10px;text-align:left;background:#FAF7F2;border-bottom:2px solid #E8E2D8;width:30%"></th>
-        <th style="padding:8px 10px;text-align:center;background:#F3EDE3;border-bottom:2px solid #DCCFB8;color:#8C6A3A">節約</th>
-        <th style="padding:8px 10px;text-align:center;background:var(--green-light);border-bottom:2px solid #b8dcc9;color:var(--green-dark)">標準</th>
-        <th style="padding:8px 10px;text-align:center;background:#FCF3DE;border-bottom:2px solid #E8CE8F;color:#8a6a00">こだわり派</th>
+        <th style="padding:8px 10px;text-align:left;background:#FAFAF7;border-bottom:2px solid #E7E9E5;width:30%"></th>
+        <th style="padding:8px 10px;text-align:center;background:#F3F6F1;border-bottom:2px solid #E7E9E5;color:#52635B">節約</th>
+        <th style="padding:8px 10px;text-align:center;background:#E2F0E8;border-bottom:2px solid #E7E9E5;color:#087A5B">標準</th>
+        <th style="padding:8px 10px;text-align:center;background:#FFF4D6;border-bottom:2px solid #E7E9E5;color:#A66B00">こだわり派</th>
       </tr>
     </thead>
     <tbody>
       {% for row in budget.plan_rows %}
-      <tr style="border-bottom:1px solid #eee">
-        <td style="padding:9px 10px;font-weight:700;color:var(--sub);font-size:0.92em">{{row.label}}</td>
-        <td style="padding:9px 10px;text-align:center;color:#8C6A3A">{{row.eco}}</td>
-        <td style="padding:9px 10px;text-align:center;color:var(--green)">{{row.std}}</td>
-        <td style="padding:9px 10px;text-align:center;color:#8a6a00">{{row.lux}}</td>
+      <tr style="border-bottom:1px solid #E7E9E5">
+        <td style="padding:9px 10px;font-weight:700;color:#4C504D;font-size:0.92em;background:#FAFAF7">{{row.label}}</td>
+        <td style="padding:9px 10px;text-align:center;color:#52635B">{{row.eco}}</td>
+        <td style="padding:9px 10px;text-align:center;color:#087A5B">{{row.std}}</td>
+        <td style="padding:9px 10px;text-align:center;color:#A66B00">{{row.lux}}</td>
       </tr>
       {% endfor %}
-      <tr style="background:#f9f9f9;font-weight:700">
-        <td style="padding:10px 10px;font-weight:700">合計目安</td>
-        <td style="padding:10px 10px;text-align:center;color:#8C6A3A;font-size:1.05em">{{budget.total_eco}}</td>
-        <td style="padding:10px 10px;text-align:center;color:var(--green);font-size:1.05em">{{budget.total_std}}</td>
-        <td style="padding:10px 10px;text-align:center;color:#8a6a00;font-size:1.05em">{{budget.total_lux}}</td>
+      <tr style="background:#FAFAF7;font-weight:700;border-top:2px solid #E7E9E5">
+        <td style="padding:10px 10px;font-weight:700;color:#4C504D">合計目安</td>
+        <td style="padding:10px 10px;text-align:center;color:#52635B;font-size:1.05em">{{budget.total_eco}}</td>
+        <td style="padding:10px 10px;text-align:center;color:#087A5B;font-size:1.05em">{{budget.total_std}}</td>
+        <td style="padding:10px 10px;text-align:center;color:#A66B00;font-size:1.05em">{{budget.total_lux}}</td>
       </tr>
     </tbody>
   </table>
@@ -1581,13 +1581,18 @@ function _syncFtLabels() {
 try { _syncFtLabels(); } catch (e) {}
 
 function _ftFakeBtn() { return { classList: { contains: function() { return false; }, add: function() {}, remove: function() {} } }; }
+function _closeFilterPanels() {
+  document.querySelectorAll('details.filter-toggle[open]').forEach(d => d.removeAttribute('open'));
+}
 function resetSpotFilters() {
   document.querySelectorAll('#spots-filter-type .filter-btn.active, #spots-filter-region .filter-btn.active, #spots-filter-row .filter-btn.active').forEach(b => b.classList.remove('active'));
   filterSpots('type', 'all', _ftFakeBtn());
+  _closeFilterPanels();
 }
 function resetFoodFilters() {
   document.querySelectorAll('#food-filter-type .filter-btn.active, #food-filter-city .filter-btn.active').forEach(b => b.classList.remove('active'));
   filterFood('type', 'all', _ftFakeBtn());
+  _closeFilterPanels();
 }
 
 {% if singlepage %}
