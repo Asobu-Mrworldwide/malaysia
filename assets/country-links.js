@@ -97,8 +97,8 @@
           <p>このページが役に立ったら、旅の相談相手に送ってあげてください。</p>
           <button type="button" id="cl-share-copy" class="sf-copy-btn"><span>このページのリンクをコピー</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-1 1"/><path d="M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l1-1"/></svg></button>
           <div class="sf-share-links">
-            <a href="#" target="_blank" rel="noopener">X で共有</a>
-            <a href="#" target="_blank" rel="noopener">LINE で送る</a>
+            <a id="cl-share-x" href="#" target="_blank" rel="noopener">X で共有</a>
+            <a id="cl-share-line" href="#" target="_blank" rel="noopener">LINE で送る</a>
           </div>
         </div>
       </div>
@@ -117,6 +117,13 @@
   // ハンバーガードロワーの「近隣の国」欄にも同じリストを流用する
   const hbNearby = document.getElementById("hb-nearby");
   if (hbNearby) hbNearby.innerHTML = thirdColHtml + `<a href="${base}index.html" class="active">すべての旅先を見る →</a>`;
+
+  const shareUrl = encodeURIComponent(location.href);
+  const shareText = encodeURIComponent(document.title);
+  const xLink = document.getElementById("cl-share-x");
+  if (xLink) xLink.href = `https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+  const lineLink = document.getElementById("cl-share-line");
+  if (lineLink) lineLink.href = `https://social-plugins.line.me/lineit/share?url=${shareUrl}`;
 
   const shareCopyBtn = document.getElementById("cl-share-copy");
   if (shareCopyBtn) shareCopyBtn.addEventListener("click", () => {

@@ -281,6 +281,39 @@ const AFFILIATE_CARDS = {
     color: '#6c4ff6',
   },
 
+  // ── モバイルWi-Fi（ポケットWi-Fiレンタル）──
+  // TODO: 事業者名・アフィリエイトURL・ロゴ/アイコンは後日差し替え
+  wifi1: {
+    icon:    '📶',
+    name:    'モバイルWi-Fi（1）',
+    tagline: 'ポケットWi-Fiレンタル',
+    points: [
+      '端末を受け取るだけ、設定不要で電源ONですぐ使える',
+      '複数人・複数端末で1台をシェアできる',
+      '空港カウンターや宅配で受取・返却が可能',
+      'スマホの設定に不慣れな人でも安心',
+    ],
+    note:  '',
+    btn:   '詳細を見る →',
+    url:   '#',
+    color: '#0a7cff',
+  },
+  wifi2: {
+    icon:    '📶',
+    name:    'モバイルWi-Fi（2）',
+    tagline: 'ポケットWi-Fiレンタル',
+    points: [
+      '大容量・無制限プランで動画も気兼ねなく使える',
+      '周遊エリア対応で複数国をまたぐ旅程でも1台でOK',
+      '長期レンタルほど1日あたりが割安',
+      '24時間の日本語サポート',
+    ],
+    note:  '',
+    btn:   '詳細を見る →',
+    url:   '#',
+    color: '#00a86b',
+  },
+
   skyscanner: {
     icon:      '<img src="../assets/skyscanner-logo.png" alt="Skyscanner" style="width:100%;height:100%;object-fit:contain;display:block">',
     mobileIconImg: '../assets/skyscanner-icon.png',

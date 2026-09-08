@@ -710,7 +710,8 @@
         "timing_color": "#cc0001",
         "border_color": "#e8c010",
         "bar_color": "linear-gradient(to bottom,#e8c010,#b09000)",
-        "desc_html": "審査・発行に2〜3週間かかることがある。両替レートが良くATM引き出しにも対応している<strong>Wiseカード</strong>がおすすめ。"
+        "desc_html": "ベトナムは都市部でカードやQR決済が増えているものの、屋台や小規模店では現金が基本。カード類は発行に2〜3週間かかることもあるので、渡航が決まったら早めに動きたいところ。両替レートが良く現地ATMでドンを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。",
+        "wise_card": true
       },
       {
         "title": "航空券・ホテルの予約",

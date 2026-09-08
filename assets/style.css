@@ -116,7 +116,7 @@ a:hover{color:var(--green)}
   .page-grid{padding:0 0 26px;background:var(--bg-page)}
   .page-grid .container{margin:0;max-width:none;min-height:0}
   /* スマホ: 余白を詰める・左右10pxインセット */
-  .s-lead,.s-body>.s-card,.tab-body,
+  .s-lead,.s-body>.s-card,.tab-body:not(.tab-body--carded),
   #slides-wrap>section:not(:has(.s-lead)):not(:has(.tab-body)),
   .tab-body--carded .tb-card{padding:16px 14px;margin:16px 10px 0}
   .s-body>.season-tip-box,.s-body>.infeed-ad,
@@ -355,8 +355,8 @@ a.site-logo:hover,a.site-logo:focus,.site-logo>a:hover{color:#fff}
   .sf-col:not(.sf-share)>a{font-size:0.92em;line-height:1;padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
   .sf-col:not(.sf-share)>a:last-child{border-bottom:none}
   .sf-label{margin-bottom:6px}
-  .sf-bottom{flex-direction:column;align-items:flex-start;gap:10px;padding:16px 18px 20px}
-  .sf-legal{flex-wrap:wrap;gap:10px 16px}
+  .sf-bottom{flex-direction:column;align-items:center;gap:10px;padding:16px 18px 20px;text-align:center}
+  .sf-legal{flex-wrap:wrap;justify-content:center;gap:10px 16px}
 }
 
 /* ラベルタグ */
@@ -426,7 +426,7 @@ section.active{display:block}
 .t-extreme{background:#c83010;color:#fff}
 .t-extreme{background:linear-gradient(160deg,#c83030,#d85050);color:#fff}
 .city-season{margin-bottom:14px}
-.city-name{font-size:0.85em;font-weight:700;color:var(--green-dark);margin-bottom:4px}
+.city-name{font-family:'Zen Kaku Gothic New',sans-serif;font-size:1.15em;font-weight:500;color:inherit;margin:0 0 4px}
 .season-mini{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin:8px 0 6px}
 .sm-col{text-align:center}
 .sm-lbl{font-size:0.65em;color:var(--sub);margin-bottom:2px;font-weight:600}
@@ -854,6 +854,9 @@ section.active{display:block}
   .budget-table .price-col .td-price{display:block;margin-bottom:2px;margin-top:0}
   .budget-table .aff-wrap{display:block;width:100%;text-align:right}
   .budget-table .budget-link{font-size:0.8em}
+  /* 費用目安の比較テーブル：スマホでは詰めて枠内に収める（左右余白を揃える） */
+  .budget-compare{font-size:0.74em}
+  .budget-compare th,.budget-compare td{padding-left:5px !important;padding-right:5px !important}
 }
 @media(max-width:480px){.csh-grid{grid-template-columns:1fr}}
 @media(max-width:520px){

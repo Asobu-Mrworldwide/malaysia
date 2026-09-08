@@ -93,7 +93,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
 .sp-point:nth-child(even) .sp-point-body{order:2}
 .sp-point:nth-child(even) .sp-point-img{order:1}
 .sp-point-body{flex:1;min-width:0;display:grid;gap:10px}
-.sp-point-title{font-family:'Zen Kaku Gothic New',sans-serif;font-size:1.15em;font-weight:500;line-height:1.5;margin-bottom:0}
+.sp-point-title{font-family:'Zen Kaku Gothic New',sans-serif;font-size:1.15em;font-weight:500;line-height:1.5;margin:0}
 .sp-point-text{font-size:0.85em;color:#3A3833;line-height:2}
 .sp-point-img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;flex-shrink:0;display:block;border-radius:6px}
 .sp-point-img-square{aspect-ratio:1/1}
@@ -300,7 +300,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
     {% for pt in spot_points %}
     <div class="sp-point{% if not pt.image %} sp-point-noimg{% endif %}">
       <div class="sp-point-body">
-        <div class="sp-point-title">{{pt.title}}</div>
+        <h3 class="sp-point-title">{{pt.title}}</h3>
         <div class="sp-point-text">{{pt.body}}</div>
       </div>
       {% if pt.image %}{% if pt.spot_ref %}<img src="{{pt.image}}" alt="{{pt.title}}" class="sp-point-img{% if pt.food_ref %} sp-point-img-square{% endif %}" onclick="showSpot('{{pt.spot_ref}}')" style="cursor:pointer">{% else %}{% if pt.food_ref %}<img src="{{pt.image}}" alt="{{pt.title}}" class="sp-point-img sp-point-img-square" onclick="showFood('{{pt.food_ref}}')" style="cursor:pointer">{% else %}<img src="{{pt.image}}" alt="{{pt.title}}" class="sp-point-img">{% endif %}{% endif %}{% endif %}
@@ -429,7 +429,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
 
     {% for city in season.cities %}
     <div class="city-season" style="margin-top:14px;padding-top:14px"><hr style="border:none;border-top:1px solid #E8E2D8;margin-bottom:14px">
-      <div class="city-name">{{city.name}}</div>
+      <h3 class="city-name">{{city.name}}</h3>
       <div class="season-grid">
         <div class="month-col"><div class="month-lbl">1月</div><div class="month-dot {{city.months.0.type}}">{{city.months.0.icon}}<span class="md-t">{{city.months.0.temp}}</span></div></div>
         <div class="month-col"><div class="month-lbl">2月</div><div class="month-dot {{city.months.1.type}}">{{city.months.1.icon}}<span class="md-t">{{city.months.1.temp}}</span></div></div>
@@ -497,7 +497,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
   <h2 data-label="TRAVEL BUDGET">旅行費用の目安</h2>
   {% if budget.intro %}<p style="font-size:0.85em;color:var(--sub);line-height:1.8;margin:0 0 12px">{{budget.intro}}</p>{% endif %}
   <div style="overflow-x:auto">
-  <table style="width:100%;border-collapse:collapse;font-size:0.82em;min-width:320px">
+  <table class="budget-compare" style="width:100%;border-collapse:collapse;font-size:0.82em">
     <thead>
       <tr>
         <th style="padding:8px 10px;text-align:left;background:#FAF7F2;border-bottom:2px solid #E8E2D8;width:30%"></th>
@@ -732,6 +732,7 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
             <span style="font-size:0.65em;color:{{step.timing_color}};font-weight:600;white-space:nowrap">{{step.timing}}</span>
           </div>
           <div class="rmr-desc">{{step.desc_html}}</div>
+          {% if step.wise_card %}<div data-affiliate-card="wise" style="margin-top:12px"></div>{% endif %}
         </div>
       </div>
       {% endfor %}
@@ -819,9 +820,15 @@ blockquote.special-note cite{display:block;text-align:right;color:#888;font-size
   <div class="tb-sec">
   <div class="tb-card">
   <h2 data-label="SIM &amp; WI-FI" id="sim">SIM・Wi-Fi</h2>
+  <p style="font-size:0.85em;color:var(--sub);line-height:1.8;margin:0 0 12px">海外でネット接続がないと不安ですよね。少し前までは現地でSIMカードを買うところから旅が始まっていましたが、今ではeSIMという便利なものがあります。貴重な旅の時間を無駄にしないよう、渡航前に手続きを済ませておきましょう。eSIM会社はたくさんあり、比較しだすときりがありませんが、世界シェアNo.1のeSIM「Airalo」か、日本語サポートがある国内最大手の「trifa」を選んでおけばまず間違いありません。</p>
   <div class="grid2">
     <div data-affiliate-card="trifa"></div>
     <div data-affiliate-card="airalo"></div>
+  </div>
+  <p style="font-size:0.85em;color:var(--sub);line-height:1.8;margin:20px 0 12px">スマホの設定が不安な人、複数人・複数端末でシェアしたい人、旅先でパソコンを使う予定がある人には、端末を受け取って電源を入れるだけで使えるモバイルWi-Fi（ポケットWi-Fi）レンタルという選択肢もあります。</p>
+  <div class="grid2">
+    <div data-affiliate-card="wifi1"></div>
+    <div data-affiliate-card="wifi2"></div>
   </div>
   </div><!-- /tb-card -->
   </div><!-- /tb-sec -->

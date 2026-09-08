@@ -15,10 +15,10 @@ const AFFILIATES_CSS = `
 
 /* ── 説明カード ── */
 .aff-card{
-  background:#fff;
-  border-radius:6px;
-  border:1px solid #ccc;
-  box-shadow:none;
+  background:#FAF7F2;
+  border-radius:10px;
+  border:1px solid #E8E2D8;
+  box-shadow:inset 0 0 0 1px #fff;
   overflow:hidden;
   margin-top:12px;
   display:flex;
@@ -27,7 +27,7 @@ const AFFILIATES_CSS = `
 .aff-card-header{
   display:flex;align-items:center;gap:12px;
   padding:14px 16px 12px;
-  border-bottom:1px solid #f0f0f0;
+  border-bottom:1px solid #E8E2D8;
 }
 .aff-card-icon{font-size:1.6em;line-height:1}
 .aff-card-name{font-size:0.95em;font-weight:900;color:#111}

@@ -461,7 +461,8 @@
         "timing_color": "#1a8a5a",
         "border_color": "#1a8a5a",
         "bar_color": "linear-gradient(to bottom,#1a8a5a,#b09000)",
-        "desc_html": "シンガポールは世界屈指のキャッシュレス社会。<strong>タッチ決済対応のVisa/MastercardならMRT・バスにもそのまま乗れる</strong>（SimplyGo）。Wiseカードもタッチ決済・ATM引き出しに対応していて便利。"
+        "desc_html": "シンガポールは世界有数のキャッシュレス社会で、タッチ決済対応カードならMRTやバスにもそのまま乗れる。カード類は発行に2〜3週間かかることもあるので、渡航が決まったら早めに動きたいところ。両替レートが良く現地ATMでシンガポールドルを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。",
+        "wise_card": true
       },
       {
         "title": "航空券・ホテルの予約",

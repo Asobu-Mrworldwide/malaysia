@@ -673,6 +673,15 @@
         "desc_html": "入国時点で<strong>6ヶ月以上</strong>の残存有効期間が必要。査証スタンプ用の空白ページも確認しておこう。"
       },
       {
+        "title": "海外対応クレジットカードの申込",
+        "timing": "1ヶ月前",
+        "timing_color": "#1a8a5a",
+        "border_color": "#1a8a5a",
+        "bar_color": "linear-gradient(to bottom,#1a8a5a,#5a9a3a)",
+        "desc_html": "ラオスは現金社会で、カードが使える店は一部のホテルやレストランに限られる。カード類は発行に2〜3週間かかることもあるので、渡航が決まったら早めに動きたいところ。両替レートが良く現地ATMでキープを引き出せる<strong>Wiseカード</strong>も合わせて作っておけば、現金が必要な場面でも困らない。",
+        "wise_card": true
+      },
+      {
         "title": "航空券・ホテルの予約",
         "timing": "2〜3ヶ月前",
         "timing_color": "#1a8a5a",

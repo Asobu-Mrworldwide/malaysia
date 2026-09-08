@@ -31,8 +31,9 @@
   @keyframes wm-float{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-9px) rotate(-8deg)}}
   .wm-rise{animation:wm-rise .7s cubic-bezier(.2,.7,.2,1) both}
   .wm-float{animation:wm-float 5.5s ease-in-out infinite}
-  .wm-toc-a:hover{color:#15735b}
   .wm-submit:hover{background:#14503C !important}
+  .wm-content .toc-sidebar{margin-top:0}
+  .wm-content .toc-list a{font-size:12px;padding:7px 12px;white-space:nowrap}
   .wm-form input:focus,.wm-form select:focus,.wm-form textarea:focus{outline:none;border-color:#15735b !important}
   @media (max-width:1180px){
     .wm-shell{min-width:0 !important}
@@ -41,12 +42,34 @@
     .wm-hero-h1{font-size:27px !important}
     .wm-hero-deco{display:none !important}
     .wm-content{grid-template-columns:1fr !important;gap:0 !important;padding:28px 18px 8px !important}
+    .wm-main{padding-left:0 !important}
     .wm-toc{display:none !important}
     .wm-cardgrid{grid-template-columns:1fr !important}
     .wm-form-row{grid-template-columns:1fr !important}
-    .wm-band{flex-direction:column !important;align-items:flex-start !important}
+    .wm-band{gap:12px !important}
+    .wm-band > a{flex:none;white-space:nowrap;min-height:40px !important;padding:0 18px !important;font-size:13px !important}
+    .wm-form{border:0 !important;padding:0 !important}
+    .wm-form-embed{display:none !important}
+    .wm-form-fallback{flex-direction:column !important;align-items:flex-end !important;gap:12px !important}
+    .wm-form-fallback > span{display:none !important}
+    .wm-form-fallback > a{min-height:40px !important;padding:0 18px !important;font-size:13px !important}
     .wm-foot-top{grid-template-columns:1fr 1fr !important;padding:32px 20px 24px !important}
     .wm-foot-bottom{flex-direction:column !important;align-items:flex-start !important;gap:10px !important;padding:16px 20px !important}
+  }
+  .wm-head{display:flex;align-items:center;gap:13px}
+  .wm-head__num{position:relative;flex:none;display:inline-grid;place-items:center;padding:2px 5px 0}
+  .wm-head__num::before,.wm-head__num::after{content:'';position:absolute;z-index:0}
+  .wm-head__num::before{left:-7px;right:-7px;top:5px;bottom:-1px;border-radius:13px 17px 12px 18px;background:#F7E07C;transform:rotate(-1.6deg)}
+  .wm-head__num::after{left:-3px;right:2px;top:11px;bottom:-4px;border-radius:15px 11px 18px 13px;background:#F9E68F;transform:rotate(1.2deg)}
+  .wm-head__num>span{position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;line-height:1;letter-spacing:-0.02em;color:#14503C}
+  .wm-head__title{margin:0;font-size:22px;font-weight:900;letter-spacing:0.01em;color:#14503C}
+  .wm-head__line{flex:1;min-width:20px;height:2px;background:#14503C}
+  .wm-head__plane{flex:none;width:30px;height:30px;margin-left:-4px;object-fit:contain;transform:rotate(16deg)}
+  @media (max-width:480px){
+    .wm-head{gap:10px}
+    .wm-head__num>span{font-size:24px}
+    .wm-head__title{font-size:20px}
+    .wm-head__plane{width:28px;height:28px}
   }
   @media (prefers-reduced-motion:reduce){ .wm-float,.wm-rise{animation:none !important} }
 </style>
@@ -121,33 +144,40 @@
     </div>
   </div>
 
-  <div class="wm-content wm-rise" style="display: grid; grid-template-columns: minmax(0, 1fr) 258px; gap: 44px; align-items: start; max-width: 1210px; margin: 0 auto; padding: 44px 34px 8px;">
+  <div class="wm-content wm-rise" style="display: grid; grid-template-columns: 196px minmax(0, 1fr) 237px; gap: 30px; align-items: start; max-width: 1440px; margin: 0 auto; padding: 44px 32px 8px;">
 
-    <div style="display: grid; gap: 46px;">
+    <aside class="toc-sidebar wm-toc">
+      <span class="toc-label">CONTENTS</span>
+      <div class="toc-list">
+        <a href="#ct-about">01　お問い合わせについて</a>
+        <a href="#ct-form">02　お問い合わせフォーム</a>
+        <a href="#ct-faq">03　送信の前に</a>
+      </div>
+    </aside>
+
+    <div class="wm-main" style="display: grid; gap: 46px; padding-left: 40px;">
 
       <div id="ct-about" style="display: grid; gap: 17px;">
-        <div style="display: flex; align-items: center; gap: 13px; padding-bottom: 12px; border-bottom: 1px solid #D9E4D6;">
-          <span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: #15735b;">01</span>
-          <h2 style="margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.01em; color: #14503C;">お問い合わせについて</h2>
+        <div class="wm-head">
+          <span class="wm-head__num"><span>01</span></span>
+          <h2 class="wm-head__title">お問い合わせについて</h2>
+          <span class="wm-head__line" aria-hidden="true"></span>
+          <img class="wm-head__plane" src="../assets/common/paper-plane-green.png" alt="" aria-hidden="true">
         </div>
         <div style="display: grid; gap: 13px;">
           <p style="margin: 0; font-size: 14px; line-height: 1.95; text-wrap: pretty; color: #4B5563;">当サイトの内容に関するご意見・誤情報のご指摘・その他のお問い合わせは、こちらからお気軽にどうぞ。旅行情報は随時更新を心がけていますが、現地の状況と異なる場合もございます。気になる点があればお知らせいただけると助かります。</p>
           <p style="margin: 0; font-size: 14px; line-height: 1.95; text-wrap: pretty; color: #4B5563;">内容を確認のうえ、順次対応いたします。返信をお約束するものではございませんので、あらかじめご了承ください。</p>
         </div>
-        <div class="wm-cardgrid" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;">
-          <div style="display: grid; gap: 7px; padding: 16px 18px; border: 1px solid #EDEAE1; border-radius: 12px;">
+        <div class="wm-cardgrid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+          <div style="display: grid; gap: 7px; padding: 16px 18px; background: #fff; border: 1px solid #EDEAE1; border-radius: 12px; box-shadow: 0 2px 0 rgba(20,40,30,0.05), 0 6px 16px rgba(20,40,30,0.07);">
             <span style="font-size: 13.5px; font-weight: 900; color: #14503C;">情報の誤りの指摘</span>
             <span style="font-size: 12.5px; line-height: 1.8; color: #6B776F;">料金・ビザ・営業時間など、現地と違った点</span>
           </div>
-          <div style="display: grid; gap: 7px; padding: 16px 18px; border: 1px solid #EDEAE1; border-radius: 12px;">
+          <div style="display: grid; gap: 7px; padding: 16px 18px; background: #fff; border: 1px solid #EDEAE1; border-radius: 12px; box-shadow: 0 2px 0 rgba(20,40,30,0.05), 0 6px 16px rgba(20,40,30,0.07);">
             <span style="font-size: 13.5px; font-weight: 900; color: #14503C;">ご意見・ご要望</span>
             <span style="font-size: 12.5px; line-height: 1.8; color: #6B776F;">扱ってほしい国、あると嬉しい機能など</span>
           </div>
-          <div style="display: grid; gap: 7px; padding: 16px 18px; border: 1px solid #EDEAE1; border-radius: 12px;">
-            <span style="font-size: 13.5px; font-weight: 900; color: #14503C;">掲載・引用のご相談</span>
-            <span style="font-size: 12.5px; line-height: 1.8; color: #6B776F;">記事・イラストの利用についてのご確認</span>
-          </div>
-          <div style="display: grid; gap: 7px; padding: 16px 18px; border: 1px solid #EDEAE1; border-radius: 12px;">
+          <div style="display: grid; gap: 7px; padding: 16px 18px; background: #fff; border: 1px solid #EDEAE1; border-radius: 12px; box-shadow: 0 2px 0 rgba(20,40,30,0.05), 0 6px 16px rgba(20,40,30,0.07);">
             <span style="font-size: 13.5px; font-weight: 900; color: #14503C;">広告掲載のご依頼</span>
             <span style="font-size: 12.5px; line-height: 1.8; color: #6B776F;">タイアップ・バナー掲載などのご相談</span>
           </div>
@@ -155,23 +185,19 @@
       </div>
 
       <div id="ct-form" style="display: grid; gap: 17px;">
-        <div style="display: flex; align-items: center; gap: 13px; padding-bottom: 12px; border-bottom: 1px solid #D9E4D6;">
-          <span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: #15735b;">02</span>
-          <h2 style="margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.01em; color: #14503C;">お問い合わせフォーム</h2>
+        <div class="wm-head">
+          <span class="wm-head__num"><span>02</span></span>
+          <h2 class="wm-head__title">お問い合わせフォーム</h2>
+          <span class="wm-head__line" aria-hidden="true"></span>
+          <img class="wm-head__plane" src="../assets/common/paper-plane-green.png" alt="" aria-hidden="true">
         </div>
-        <div style="display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border-radius: 12px; background: #FBF8F0;">
-          <img src="../assets/common/14_answer-bubble.png" alt="" style="flex: none; width: 24px; height: 24px; margin-top: 2px; object-fit: contain;">
-          <p style="margin: 0; font-size: 13.5px; line-height: 1.9; text-wrap: pretty; color: #4B5563;">いただいた個人情報は、お問い合わせへの対応以外の目的には使用しません。取り扱いについては<a href="privacy.html" style="font-weight: 700;">プライバシーポリシー</a>をご覧ください。</p>
-        </div>
+        <p style="margin: 0; font-size: 13.5px; line-height: 1.9; text-wrap: pretty; color: #4B5563;">いただいた個人情報は、お問い合わせへの対応以外の目的には使用しません。取り扱いについては<a href="privacy.html" style="font-weight: 700;">プライバシーポリシー</a>をご覧ください。</p>
 
-        <div class="wm-form" style="display: grid; gap: 18px; padding: 26px 28px; border: 1px solid #EDEAE1; border-radius: 14px;">
-          <div style="display: grid; gap: 6px;">
-            <span style="font-size: 12.5px; color: #6B776F; line-height: 1.8;">下のボタンからGoogleフォームが開きます。送信内容は運営者のみが確認します。</span>
-          </div>
-          <div style="border: 1px solid #EDEAE1; border-radius: 12px; overflow: hidden;">
+        <div class="wm-form" style="display: grid; gap: 18px;">
+          <div class="wm-form-embed" style="border: 1px solid #EDEAE1; border-radius: 12px; overflow: hidden;">
             <iframe title="お問い合わせフォーム" src="https://docs.google.com/forms/d/e/1FAIpQLSfCg0R5JT9fgQlhsJFduS4qlNjhLH7vhcjk1zbT5_ub6KRyLA/viewform?embedded=true" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" style="display:block;width:100%;border:0;">読み込んでいます…</iframe>
           </div>
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 2px;">
+          <div class="wm-form-fallback" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 2px;">
             <span style="font-size: 12px; color: #6B776F;">フォームが表示されない場合は、下のボタンから直接開いてください。</span>
             <a class="wm-submit" href="https://docs.google.com/forms/d/e/1FAIpQLSfCg0R5JT9fgQlhsJFduS4qlNjhLH7vhcjk1zbT5_ub6KRyLA/viewform" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; padding: 0 26px; border-radius: 999px; background: #15735b; font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap;">フォームを開く →</a>
           </div>
@@ -179,24 +205,19 @@
       </div>
 
       <div id="ct-faq" style="display: grid; gap: 17px;">
-        <div style="display: flex; align-items: center; gap: 13px; padding-bottom: 12px; border-bottom: 1px solid #D9E4D6;">
-          <span style="flex: none; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: #15735b;">03</span>
-          <h2 style="margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.01em; color: #14503C;">送信の前に</h2>
+        <div class="wm-head">
+          <span class="wm-head__num"><span>03</span></span>
+          <h2 class="wm-head__title">送信の前に</h2>
+          <span class="wm-head__line" aria-hidden="true"></span>
+          <img class="wm-head__plane" src="../assets/common/paper-plane-green.png" alt="" aria-hidden="true">
         </div>
         <p style="margin: 0; font-size: 14px; line-height: 1.95; text-wrap: pretty; color: #4B5563;">サイトの考えかたや情報の作り方については、よくある質問にまとめています。同じ内容の答えが見つかることもあります。</p>
-        <div class="wm-band" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 20px; border-radius: 12px; background: #FBF8F0;">
-          <span style="font-size: 13.5px; font-weight: 700; color: #14503C;">よくある質問（FAQ）を見る</span>
-          <a href="faq.html" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 18px; border-radius: 999px; background: #15735b; font-size: 13px; font-weight: 700; color: #fff;">FAQ へ →</a>
+        <div class="wm-band" style="display: flex; align-items: center; justify-content: flex-end;">
+          <a href="faq.html" style="display: inline-flex; align-items: center; gap: 9px; min-height: 48px; padding: 0 26px; border-radius: 999px; background: #15735b; font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap;">FAQ へ →</a>
         </div>
       </div>
     </div>
 
-    <div class="wm-toc" style="position: sticky; top: 76px; display: grid; gap: 4px; padding: 20px 18px; border: 1px solid #EDEAE1; border-radius: 14px;">
-      <span style="padding-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #C9B896;">CONTENTS</span>
-      <a class="wm-toc-a" href="#ct-about" style="padding: 8px 0; font-size: 13px; line-height: 1.6; color: #4B5563;">01　お問い合わせについて</a>
-      <a class="wm-toc-a" href="#ct-form" style="padding: 8px 0; font-size: 13px; line-height: 1.6; color: #4B5563;">02　お問い合わせフォーム</a>
-      <a class="wm-toc-a" href="#ct-faq" style="padding: 8px 0; font-size: 13px; line-height: 1.6; color: #4B5563;">03　送信の前に</a>
-    </div>
   </div>
 
   <div style="overflow: hidden;">
@@ -204,6 +225,28 @@
   </div>
 
   <script src="../assets/country-links.js"></script>
+
+  <script>
+  /* 目次: スクロールに応じて現在地をハイライト */
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc-list a'));
+    if (!links.length) return;
+    var sections = links.map(function(a){
+      return document.getElementById(a.getAttribute('href').slice(1));
+    });
+    function onScroll(){
+      var pos = window.scrollY + 140;
+      var idx = 0;
+      for (var i = 0; i < sections.length; i++){
+        if (sections[i] && sections[i].offsetTop <= pos) idx = i;
+      }
+      links.forEach(function(a, i){ a.classList.toggle('active', i === idx); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+  </script>
 </div>
 
 <script>
